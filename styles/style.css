@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box; 
+}
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  color: #010326;
+}
+main {
+  display: flex;
+  flex: 1;
+  background: #F2E5D5
+}
+main > #container {
+  flex: 1;
+}
+main > #left, 
+main > #right {
+  flex: 0 0 20vw;
+  background: #D9C3B0;
+}
+main > #left {
+  order: -1;
+}
+header, footer {
+  text-align: center;
+  background: #A6948A;
+  height: 20vh;
+}
+header, footer, #container, nav, aside {
+  padding: 1em;
+}
+
+a {
+  color:#012840;
+  text-decoration: none;
+}
+
+@media all and (max-width: 575px) {
+  #left {
+    display: none;
+  }
+  #right {
+    display: none;
+  }
+}

@@ -21,6 +21,14 @@ function divide(a, b) {
   } else return a / b;
 }
 
+function percentage() {
+  pass;
+}
+
+function changeSign(a) {
+  return a - (a * 2);
+}
+
 function operate(a, b, operator) {
   let result = 0;
   switch (operator) {
@@ -36,6 +44,17 @@ function operate(a, b, operator) {
     case "/":
       result = divide(a, b);
       break;
+    case "=":
+      break;
+    case "%":
+      percentage();
+      break;
+    case "+/-":
+      changeSign();
+      break;
+    case "ac":
+      allClear();
+      break;
   }
   return result;
 }
@@ -47,3 +66,4 @@ function allClear() {
 function displayOutput(string) {
   output.textContent = string;
 }
+

@@ -43,3 +43,7 @@ function operate(a, b, operator) {
 function allClear() {
   output.textContent = "";
 }
+
+function displayOutput(string) {
+  output.textContent = string;
+}

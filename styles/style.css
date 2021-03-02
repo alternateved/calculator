@@ -110,7 +110,7 @@ main > #left {
   display: grid;
   grid-template-rows: repeat(2, minmax(0, 1fr));
 }
-#history {
+#memory {
   grid-row: 1 / 1;
   font-size: calc(1rem + 0.7vw);
   font-weight: 500;

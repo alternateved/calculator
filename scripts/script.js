@@ -1,3 +1,6 @@
+const digits = document.querySelectorAll(".digits");
+const actions = document.querySelectorAll(".actions");
+
 function add(a, b) {
   return a + b;
 }

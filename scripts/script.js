@@ -37,15 +37,27 @@ function operate(operator, a, b = a) {
   switch (operator) {
     case "+":
       result = add(a, b);
+      storedValue = result;
+      displayHistory(result);
+      displayOutput(result);
       break;
     case "-":
       result = subtract(a, b);
+      storedValue = result;
+      displayHistory(result);
+      displayOutput(result);
       break;
     case "*":
       result = multiply(a, b);
+      storedValue = result;
+      displayHistory(result);
+      displayOutput(result);
       break;
     case "/":
       result = divide(a, b);
+      storedValue = result;
+      displayHistory(result);
+      displayOutput(result);
       break;
     case "%":
       result = percentage(a);
@@ -60,20 +72,29 @@ function operate(operator, a, b = a) {
 function allClear() {
   output.textContent = "";
   memory.textContent = "";
+  displayValue = "";
+  storedOperation = "";
+  lastAction = "";
+  storedValue = "";
+  result = "";
 }
 
 function displayOutput(string) {
   output.textContent = string;
 }
 
-function displayHistory(string) {
-  memory.textContent = string;
+function displayHistory(result) {
+  memory.textContent =
+    storedValue + storedOperation + displayValue + "=" + result;
 }
 
 function gatherInput() {
   digits.forEach((digit) =>
     digit.addEventListener("click", (event) => {
-      if(event.target.textContent === "." && displayValue.includes(event.target.textContent)) {
+      if (
+        event.target.textContent === "." &&
+        displayValue.includes(event.target.textContent)
+      ) {
         return;
       } else {
         displayValue += event.target.textContent;
@@ -83,38 +104,30 @@ function gatherInput() {
   );
 }
 
+function calculate() {
+  actions.forEach((action) =>
+    action.addEventListener("click", (event) => {
+      displayOutput("");
+      if (event.target.textContent === "AC") {
+        allClear();
+      } else if (
+        event.target.textContent === "=" &&
+        storedOperation.length > 0 &&
+        storedOperation !== "="
+      ) {
+        operate(storedOperation, storedValue, displayValue);
+      } else if (storedValue.length === 0 && displayValue.length > 0) {
+        storedValue = displayValue;
+        storedOperation = event.target.textContent;
+      }
+      displayValue = "";
+    })
+  );
+}
+
 let displayValue = "";
 let storedOperation = "";
-let lastAction = "";
 let storedValue = "";
-let result = "";
 
 gatherInput();
-
-actions.forEach((action) =>
-  action.addEventListener("click", (event) => {
-    displayOutput("");
-    if (
-      event.target.textContent === "=" &&
-      storedOperation.length > 0 &&
-      storedOperation !== "="
-    ) {
-      result = operate(storedOperation, storedValue, displayValue);
-      lastAction =
-        storedValue +
-        storedOperation +
-        displayValue +
-        event.target.textContent +
-        result;
-      storedValue = result;
-      displayHistory(lastAction);
-      displayOutput(result);
-    } else if (storedValue.length === 0) {
-      storedValue = displayValue;
-      storedOperation = event.target.textContent;
-    } else if (event.target.textContent === "ac") {
-      allClear();
-    }
-    displayValue = "";
-  })
-);
+calculate();

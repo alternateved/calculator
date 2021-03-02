@@ -1,5 +1,7 @@
 const digits = document.querySelectorAll(".digits");
 const actions = document.querySelectorAll(".actions");
+const history = document.querySelector("#history");
+const output = document.querySelector("#output");
 
 function add(a, b) {
   return a + b;
@@ -36,4 +38,8 @@ function operate(a, b, operator) {
       break;
   }
   return result;
+}
+
+function allClear() {
+  output.textContent = "";
 }

@@ -5,7 +5,7 @@ Implementation of Calculator from [The Odin Project](https://www.theodinproject.
 **Live preview** of the project is available [here](https://alternateved.github.io/calculator/).
 
 
-## **Features:**
+## **Features**
 * Supported operations: **division**, **multiplication**, **subtraction**, **addition**, **calculating percentage**, **changing sign**
 * **Rounding** to four decimal places
 * **DEL button** (to delete one symbol at a time) and **AC button** (to perform clear of all display and variables)
@@ -17,15 +17,11 @@ Implementation of Calculator from [The Odin Project](https://www.theodinproject.
 * **Responsive** design: calculator is functional on desktop and mobile web browsers 
 
 
-## **Additional comments:**
+### **Side notes**
 * Used **CSS Flexbox** to create website's layout
 * Used **CSS Grid** to style calculator
 * Learned how to implement **keyboard support** with HTMLElement.click() method
 * Deepened knowledge of how **functions work** together
-
-
-### **Third party code:**
-* [Google Fonts](https://fonts.google.com/)
 
 
 ### **Tools:**
@@ -33,3 +29,7 @@ Implementation of Calculator from [The Odin Project](https://www.theodinproject.
 * Linux terminal
 * Git and GitHub
 * Adobe Color
+
+
+### **Third party code:**
+* [Google Fonts](https://fonts.google.com/)

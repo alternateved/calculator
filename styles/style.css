@@ -74,9 +74,6 @@ main > #left {
   background-color: #7a6d66;
   top: 2px;
 }
-.active {
-  background-color: #7a6d66;
-}
 #container > .digits {
   display: flex;
   justify-content: center;

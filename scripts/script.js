@@ -3,6 +3,11 @@ const actions = document.querySelectorAll(".actions");
 const memory = document.querySelector("#memory");
 const output = document.querySelector("#output");
 
+let displayValue = "";
+let storedOperation = "";
+let storedValue = "";
+
+
 function add(a, b) {
   return a + b;
 }
@@ -16,9 +21,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if (a === 0 && b === 0) {
-    return "PORTAL TO ANOTHER DIMENSION";
-  } else return a / b;
+   return a / b;
 }
 
 function percentage(a) {
@@ -60,7 +63,15 @@ function roundLongDecimals(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
-function gatherInput() {
+function gatherKeyboardInput() {
+  window.addEventListener('keydown', (event) => {
+    const key = document.querySelector(`div[data-key='${event.keyCode}']`);
+    if (key === null) {
+      return;
+    } else key.click();
+  });
+}
+function gatherMouseInput() {
   digits.forEach((digit) =>
     digit.addEventListener("click", (event) => {
       if (
@@ -110,6 +121,10 @@ function calculate(operator, a, b) {
     case "/":
       if (a === 0 && b === 0) {
         result = "PORTAL TO ANOTHER DIMENSION";
+        displayOutput(result);
+        break;
+      } else if (b === 0) {
+        result = "YOU ARE KILLING ME";
         displayOutput(result);
         break;
       } else {
@@ -173,9 +188,5 @@ function operate() {
     })
   );
 }
-
-let displayValue = "";
-let storedOperation = "";
-let storedValue = "";
 
 operate();

@@ -87,6 +87,7 @@ function gatherMouseInput() {
         return;
       } else if (displayValue === "0" && event.target.textContent !== ".") {
         displayValue = event.target.textContent;
+        displayOutput(displayValue);
   } else if (memory.textContent.length > 0 && storedValue.length > 0 && storedOperation.length === 0) {
         allClear();
         displayValue += event.target.textContent;

@@ -17,7 +17,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
   if (a === 0 && b === 0) {
-    return "NOPE";
+    return "PORTAL TO ANOTHER DIMENSION";
   } else return a / b;
 }
 
@@ -89,11 +89,18 @@ function calculate(operator, a, b) {
       storedValue = String(result);
       break;
     case "/":
-      result = divide(a, b);
-      displayHistory(result);
-      displayOutput(result);
-      storedValue = String(result);
-      break;
+      if (a === 0 && b === 0) {
+        result = "PORTAL TO ANOTHER DIMENSION";
+        displayOutput(result);
+        break;
+      } else {
+        result = divide(a, b);
+        displayHistory(result);
+        displayOutput(result);
+        storedValue = String(result);
+        break;
+      }
+
   }
 }
 

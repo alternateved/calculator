@@ -85,7 +85,9 @@ function gatherMouseInput() {
         displayValue.includes(event.target.textContent)
       ) {
         return;
-      } else if (memory.textContent.length > 0 && storedValue.length > 0 && storedOperation.length === 0) {
+      } else if (event.target.textContent === "0" && displayValue === "0") {
+        return;
+  } else if (memory.textContent.length > 0 && storedValue.length > 0 && storedOperation.length === 0) {
         allClear();
         displayValue += event.target.textContent;
         displayOutput(displayValue);

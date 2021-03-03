@@ -112,6 +112,10 @@ function operate() {
 
       if (event.target.textContent === "AC") {
         allClear();
+      } else if(event.target.textContent === "DEL") {
+        displayValue = displayValue.slice(0,-1);
+        displayOutput(displayValue);
+        return;
       } else if(event.target.textContent === "=" && storedOperation.length > 0 && displayValue.length > 0) {
         calculate(storedOperation, storedValue, displayValue);
       } else if (event.target.textContent === "%") {

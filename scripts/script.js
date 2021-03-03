@@ -8,6 +8,7 @@ let storedOperation = "";
 let storedValue = "";
 
 
+// basic math functions
 function add(a, b) {
   return a + b;
 }
@@ -32,6 +33,7 @@ function changeSign(a) {
   return a - a * 2;
 }
 
+// functions responsible for display output
 function allClear() {
   output.textContent = "";
   memory.textContent = "";
@@ -51,6 +53,7 @@ function displayHistory(result) {
     storedValue + storedOperation + displayValue + "=" + result;
 }
 
+// helper functions
 function checkForLongDecimals(result) {
   result = String(result);
   if (result.length - result.indexOf(".")-1 > 6) {
@@ -63,6 +66,7 @@ function roundLongDecimals(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
+// keyboard support
 function gatherKeyboardInput() {
   window.addEventListener('keydown', (event) => {
     const key = document.querySelector(`div[data-key='${event.keyCode}']`);
@@ -72,6 +76,7 @@ function gatherKeyboardInput() {
   });
 }
 
+// function governing input of digits
 function gatherMouseInput() {
   digits.forEach((digit) =>
     digit.addEventListener("click", (event) => {
@@ -92,6 +97,7 @@ function gatherMouseInput() {
   );
 }
 
+// function responsible for all calculations
 function calculate(operator, a, b) {
   a = Number(a);
   b = Number(b);
@@ -140,10 +146,11 @@ function calculate(operator, a, b) {
   }
 }
 
+// function governing main logic of calculator  
 function operate() {
   gatherKeyboardInput();
   gatherMouseInput();
-  
+
   actions.forEach((action) =>
     action.addEventListener("click", (event) => {
 

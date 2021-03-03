@@ -10,6 +10,7 @@ Implementation of Calculator from [The Odin Project](https://www.theodinproject.
 * **Rounding** to four decimal places
 * **DEL button** (to delete one symbol at a time) and **AC button** (to perform clear of all display and variables)
 * **Decimal button** for floating-point operations
+* History of **last operation**
 * Option to create portal to another dimension when dividing by zero
 * **Keyboard support**
 * Calculator evaluates a single pair of numbers at a time

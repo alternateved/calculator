@@ -48,6 +48,18 @@ function displayHistory(result) {
     storedValue + storedOperation + displayValue + "=" + result;
 }
 
+function checkForLongDecimals(result) {
+  result = String(result);
+  if (result.length - result.indexOf(".")-1 > 6) {
+    result = roundLongDecimals(result, 4);
+    return result;
+  } else return result;
+}
+
+function roundLongDecimals(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
 function gatherInput() {
   digits.forEach((digit) =>
     digit.addEventListener("click", (event) => {
@@ -76,18 +88,21 @@ function calculate(operator, a, b) {
   switch (operator) {
     case "+":
       result = add(a, b);
+      result = checkForLongDecimals(result); 
       displayHistory(result);
       displayOutput(result);
       storedValue = String(result);
       break;
     case "-":
       result = subtract(a, b);
+      result = checkForLongDecimals(result); 
       displayHistory(result);
       displayOutput(result);
       storedValue = String(result);
       break;
     case "*":
       result = multiply(a, b);
+      result = checkForLongDecimals(result); 
       displayHistory(result);
       displayOutput(result);
       storedValue = String(result);
@@ -99,6 +114,7 @@ function calculate(operator, a, b) {
         break;
       } else {
         result = divide(a, b);
+        result = checkForLongDecimals(result); 
         displayHistory(result);
         displayOutput(result);
         storedValue = String(result);

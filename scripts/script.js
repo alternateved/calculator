@@ -29,46 +29,6 @@ function changeSign(a) {
   return a - a * 2;
 }
 
-function operate(operator, a, b = a) {
-  a = Number(a);
-  b = Number(b);
-
-  let result = "";
-  switch (operator) {
-    case "+":
-      result = add(a, b);
-      storedValue = result;
-      displayHistory(result);
-      displayOutput(result);
-      break;
-    case "-":
-      result = subtract(a, b);
-      storedValue = result;
-      displayHistory(result);
-      displayOutput(result);
-      break;
-    case "*":
-      result = multiply(a, b);
-      storedValue = result;
-      displayHistory(result);
-      displayOutput(result);
-      break;
-    case "/":
-      result = divide(a, b);
-      storedValue = result;
-      displayHistory(result);
-      displayOutput(result);
-      break;
-    case "%":
-      result = percentage(a);
-      break;
-    case "+/-":
-      result = changeSign(a);
-      break;
-  }
-  return result;
-}
-
 function allClear() {
   output.textContent = "";
   memory.textContent = "";
@@ -104,19 +64,77 @@ function gatherInput() {
   );
 }
 
-function calculate() {
+function calculate(operator, a, b) {
+  a = Number(a);
+  b = Number(b);
+  let result = "";
+
+  switch (operator) {
+    case "+":
+      result = add(a, b);
+      displayHistory(result);
+      displayOutput(result);
+      storedValue = String(result);
+      break;
+    case "-":
+      result = subtract(a, b);
+      displayHistory(result);
+      displayOutput(result);
+      storedValue = String(result);
+      break;
+    case "*":
+      result = multiply(a, b);
+      displayHistory(result);
+      displayOutput(result);
+      storedValue = String(result);
+      break;
+    case "/":
+      result = divide(a, b);
+      displayHistory(result);
+      displayOutput(result);
+      storedValue = String(result);
+      break;
+  }
+}
+
+function operate() {
   actions.forEach((action) =>
     action.addEventListener("click", (event) => {
-      displayOutput("");
+
       if (event.target.textContent === "AC") {
         allClear();
-      } else if (
-        event.target.textContent === "=" &&
-        storedOperation.length > 0 &&
-        storedOperation !== "="
-      ) {
-        operate(storedOperation, storedValue, displayValue);
-      } else if (storedValue.length === 0 && displayValue.length > 0) {
+      } else if(event.target.textContent === "=" && storedOperation.length > 0) {
+        calculate(storedOperation, storedValue, displayValue);
+      } else if (event.target.textContent === "%") {
+        if(displayValue.length === 0) {
+          storedValue = Number(storedValue);
+          storedValue = String(percentage(storedValue));
+          displayOutput(storedValue);
+        } else {
+          storedValue = Number(displayValue);
+          storedValue = String(percentage(storedValue));
+          displayOutput(storedValue);
+        }
+ 
+      } else if (event.target.textContent === "+/-") {
+        if(displayValue.length === 0) {
+          storedValue = Number(storedValue);
+          storedValue = String(changeSign(storedValue));
+          displayOutput(storedValue);
+        } else {
+          storedValue = Number(displayValue);
+          storedValue = String(changeSign(storedValue));
+          displayOutput(storedValue);
+        }
+   
+      } else if(storedValue.length > 0 && displayValue.length === 0) {
+        storedOperation = event.target.textContent;
+      } else if (storedValue.length > 0 && displayValue.length > 0 && storedOperation.length > 0) {
+        calculate(storedOperation, storedValue, displayValue);
+      } else if (storedValue.length === 0 && displayValue.length > 0 && event.target.textContent !== "=") {
+        storedValue = displayValue;
+        storedOperation = event.target.textContent;
+      } else if (storedValue.length === 0 && displayValue.length > 0 && event.target.textContent !== "=") {
         storedValue = displayValue;
         storedOperation = event.target.textContent;
       }
@@ -130,4 +148,4 @@ let storedOperation = "";
 let storedValue = "";
 
 gatherInput();
-calculate();
+operate();

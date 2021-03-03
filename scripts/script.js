@@ -71,6 +71,7 @@ function gatherKeyboardInput() {
     } else key.click();
   });
 }
+
 function gatherMouseInput() {
   digits.forEach((digit) =>
     digit.addEventListener("click", (event) => {
@@ -140,7 +141,9 @@ function calculate(operator, a, b) {
 }
 
 function operate() {
-  gatherInput();
+  gatherKeyboardInput();
+  gatherMouseInput();
+  
   actions.forEach((action) =>
     action.addEventListener("click", (event) => {
 

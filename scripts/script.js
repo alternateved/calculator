@@ -56,6 +56,10 @@ function gatherInput() {
         displayValue.includes(event.target.textContent)
       ) {
         return;
+      } else if (memory.textContent.length > 0 && storedValue.length > 0 && storedOperation.length === 0) {
+        allClear();
+        displayValue += event.target.textContent;
+        displayOutput(displayValue);
       } else {
         displayValue += event.target.textContent;
         displayOutput(displayValue);
@@ -104,20 +108,22 @@ function calculate(operator, a, b) {
   }
 }
 
-//  12 + 7 - 5 * 3 = should yield 42. 
-
 function operate() {
+  gatherInput();
   actions.forEach((action) =>
     action.addEventListener("click", (event) => {
 
       if (event.target.textContent === "AC") {
         allClear();
-      } else if(event.target.textContent === "DEL") {
+      } else if(event.target.textContent === "DEL" && displayValue.length > 0) {
         displayValue = displayValue.slice(0,-1);
         displayOutput(displayValue);
         return;
+      } else if(event.target.textContent === "DEL") {
+        return;
       } else if(event.target.textContent === "=" && storedOperation.length > 0 && displayValue.length > 0) {
         calculate(storedOperation, storedValue, displayValue);
+        storedOperation = "";
       } else if (event.target.textContent === "%") {
         if(displayValue.length === 0) {
           storedValue = Number(storedValue);
@@ -156,5 +162,4 @@ let displayValue = "";
 let storedOperation = "";
 let storedValue = "";
 
-gatherInput();
 operate();

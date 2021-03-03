@@ -97,13 +97,15 @@ function calculate(operator, a, b) {
   }
 }
 
+//  12 + 7 - 5 * 3 = should yield 42. 
+
 function operate() {
   actions.forEach((action) =>
     action.addEventListener("click", (event) => {
 
       if (event.target.textContent === "AC") {
         allClear();
-      } else if(event.target.textContent === "=" && storedOperation.length > 0) {
+      } else if(event.target.textContent === "=" && storedOperation.length > 0 && displayValue.length > 0) {
         calculate(storedOperation, storedValue, displayValue);
       } else if (event.target.textContent === "%") {
         if(displayValue.length === 0) {
@@ -115,7 +117,6 @@ function operate() {
           storedValue = String(percentage(storedValue));
           displayOutput(storedValue);
         }
- 
       } else if (event.target.textContent === "+/-") {
         if(displayValue.length === 0) {
           storedValue = Number(storedValue);
@@ -126,13 +127,10 @@ function operate() {
           storedValue = String(changeSign(storedValue));
           displayOutput(storedValue);
         }
-   
-      } else if(storedValue.length > 0 && displayValue.length === 0) {
+      } else if(storedValue.length > 0 && displayValue.length === 0 && event.target.textContent !== "=") {
         storedOperation = event.target.textContent;
-      } else if (storedValue.length > 0 && displayValue.length > 0 && storedOperation.length > 0) {
+      } else if (storedValue.length > 0 && displayValue.length > 0 && storedOperation.length > 0 && event.target.textContent !== "=") {
         calculate(storedOperation, storedValue, displayValue);
-      } else if (storedValue.length === 0 && displayValue.length > 0 && event.target.textContent !== "=") {
-        storedValue = displayValue;
         storedOperation = event.target.textContent;
       } else if (storedValue.length === 0 && displayValue.length > 0 && event.target.textContent !== "=") {
         storedValue = displayValue;

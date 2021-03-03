@@ -47,10 +47,10 @@ main > #left {
   grid-template-areas:
     "display display display display"
     "display display display display"
-    "ac positive-negative percentage division"
-    "seven eight nine multiplication"
-    "four five six subtraction"
-    "one two three addition"
+    "ac backspace positive-negative percentage"
+    "seven eight nine division"
+    "four five six multiplication"
+    "one two three subtraction"
     "zero dot equals addition";
   background: #f2e5d5;
   border-radius: 5px;
@@ -85,15 +85,15 @@ main > #left {
   border-radius: 5px;
 }
 .digits {
-  background-color: #010326;
+  background-color: #012840;
   color: #f2e5d5;
   transition: all 0.9s linear;
 }
 .digits:hover {
-  background-color: #02064d;
+  background-color: #023859;
 }
 .digits:active {
-  background-color: #02064d;
+  background-color: #023859;
   top: 2px;
 }
 #display {
@@ -131,6 +131,9 @@ main > #left {
 }
 #ac {
   grid-area: ac;
+}
+#backspace {
+  grid-area: backspace;
 }
 #positive-negative {
   grid-area: positive-negative;

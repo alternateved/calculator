@@ -54,6 +54,7 @@ main > #left {
     "zero dot equals addition";
   background: #f2e5d5;
   border-radius: 5px;
+  box-shadow: 8px 0px 8px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 #container > .actions {
   display: flex;

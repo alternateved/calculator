@@ -6,23 +6,23 @@ Implementation of Calculator from [The Odin Project](https://www.theodinproject.
 
 
 ## **Features**
-* Supported operations: **division**, **multiplication**, **subtraction**, **addition**, **calculating percentage**, **changing sign**
-* **Rounding** to four decimal places
+* supported operations: **division**, **multiplication**, **subtraction**, **addition**, **calculating percentage**, **changing sign**
+* **rounding** to four decimal places
 * **DEL button** (to delete one symbol at a time) and **AC button** (to perform clear of all display and variables)
-* **Decimal button** for floating-point operations
-* History of **last operation**
-* Option to create portal to another dimension when dividing by zero
-* **Keyboard support**
-* Calculator evaluates a single pair of numbers at a time
-* Operations buttons and decimal button (`.`) are **prevented from pushing twice**
-* **Responsive** design: calculator is functional on desktop and mobile web browsers 
+* **decimal button** for floating-point operations
+* history of **last operation**
+* option to create portal to another dimension when dividing by zero
+* **keyboard support**
+* calculator evaluates a single pair of numbers at a time
+* operations buttons and decimal button (`.`) are **prevented from pushing twice**
+* **responsive** design: calculator is functional on desktop and mobile web browsers 
 
 
 ### **Side notes**
-* Used **CSS Flexbox** to create website's layout
-* Used **CSS Grid** to style calculator
-* Learned how to implement **keyboard support** with HTMLElement.click() method
-* Deepened knowledge of how **functions work** together
+* used **CSS Flexbox** to create website's layout
+* used **CSS Grid** to style calculator
+* learned how to implement **keyboard support** with HTMLElement.click() method
+* deepened knowledge of how **functions work** together
 
 
 ### **Tools:**

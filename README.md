@@ -25,12 +25,12 @@ Implementation of Calculator from [The Odin Project](https://www.theodinproject.
 * deepened knowledge of how **functions work** together
 
 
-### **Tools:**
+### **Tools**
 * Visual Studio Code
 * Linux terminal
 * Git and GitHub
 * Adobe Color
 
 
-### **Third party code:**
+### **Third party code**
 * [Google Fonts](https://fonts.google.com/)
